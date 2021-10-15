@@ -1,17 +1,61 @@
-<p [style.color]='color'> The title is {{title}}</p>
+<!-- <p [style.color]='color'> The title is {{title | uppercase }}
+</p>
 
-
-<p>Note content is: {{noteContent}}</p>
+<p>Note content is: {{noteContent}}</p> -->
 
 <!--
 <mat-form-field>
     <input matInput placeholder="Add Note" [(ngModel)]="noteContent">
 </mat-form-field> -->
 
-<mat-form-field>
+<!-- <mat-form-field>
     <input matInput placeholder="Add Note" #colorInput>
-</mat-form-field>
+</mat-form-field> -->
 
+<!--
 <button mat-icon-button (click)="ButtonClick(colorInput.value)">
   <mat-icon>add</mat-icon>
-</button>
+</button> -->
+
+<!-- <p>Number is: {{2 | addPipe: 4}} </p>
+
+<p>Current date is: {{currentDate | date:'shortDate'}}</p> -->
+
+
+<mat-card class="add-note-card">
+    <button mat-icon-button>
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-card>
+<br/>
+
+<h1>String is: {{"Angular Project Scholarship Trimble" | addHypen:"-"}} </h1>
+
+<div class="pipe-container">
+
+
+    <h2 appHighlightText="blue"><b>My list of uppercase strings:</b></h2>
+    <div class="string-element" *ngFor="let element of listOfStrings">
+        <p appHighlightBackground="darkblue">{{element | uppercase}}</p>
+    </div>
+
+
+    <h2 appHighlightText="green"><b>Display only the odd strings:</b></h2>
+    <div *ngFor="let element of listOfStrings;let i=index; let even=even;">
+        <p appHighlightBackground="darkgreen" *ngIf="even == true">{{element}} </p>
+    </div>
+
+
+    <h2 appHighlightText="aquamarine"><b>My list of date:</b></h2>
+    <div *ngFor="let date of listOfDate">
+        <p appHighlightBackground="violet">{{date | date:'short' }}</p>
+    </div>
+
+
+    <h2 appHighlightText="orange"><b>My list of even date:</b></h2>
+    <div *ngFor="let date of listOfDate;let i=index; let even=even;">
+        <p appHighlightBackground="yellow" *ngIf="even == true">{{date | date:'short' }}</p>
+    </div>
+
+
+</div>
