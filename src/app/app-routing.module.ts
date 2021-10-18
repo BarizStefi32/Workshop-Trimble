@@ -6,7 +6,7 @@ import { AddNoteComponent } from './add-note/add-note.component';
 
 const appRoutes:Routes=[
   { path: "", component: HomeComponent, pathMatch:"full"},
-  { path:"addnote ", component: AddNoteComponent},
+  { path:"addnote", component: AddNoteComponent},
   { path: '**', redirectTo: ''}
 ]
 

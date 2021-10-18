@@ -1,12 +1,14 @@
 <h1> Add a note</h1>
 
 <form class="add-note-form">
+    <label class="label-style" for="inputNote">Title</label>
     <mat-form-field>
-        <input matInput name="inputNote" [(ngModel)='title' ] />
+        <input matInput id="inputNote" name="inputNote" placeholder="Introduce the title" required minlength="4" />
     </mat-form-field>
 
+    <label class="label-style" for="inputNote">Description</label>
     <mat-form-field>
-        <textarea matInput name="inputNote" [(ngModel)='description' ]></textarea>
+        <textarea matInput name="inputNote" placeholder="Introduce the description" required minlength="15"></textarea>
     </mat-form-field>
 
     <button mat-button>Add</button>

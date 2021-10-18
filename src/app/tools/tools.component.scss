@@ -1,6 +1,9 @@
 .add-note-card {
-    max-width: 150px;
-    min-height: 150px;
+    // max-width: 150px;
+    // min-height: 150px;
+    margin: 20px;
+    width: 250px;
+    height: 250px;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -8,6 +11,6 @@
     background-color: aquamarine;
 }
 
-.pipe-container {
-    margin: 10px;
-}
+// .pipe-container {
+//     margin: 10px;
+// }

@@ -8,16 +8,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddNoteComponent implements OnInit {
 
-   title:string ="";
-   description:string="";
+    // title:string ="";
+    // description:string="";
 
   constructor(private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe(params => {
-        this.title= params["title"];
-        this.description =params["description"];
-    })
+    // this._activatedRoute.queryParams.subscribe(params => {
+    //      this.title= params["title"];
+    //      this.description =params["description"];
+    //  })
   }
 
 }

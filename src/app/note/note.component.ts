@@ -19,6 +19,16 @@ export class NoteComponent implements OnInit {
       id: "Id2",
       title: "Second note",
       description: "This is the description for the second note"
+    },
+    {
+      id: "Id3",
+      title: "Third note",
+      description: "This is the description for the third note"
+    },
+    {
+      id: "Id4",
+      title: "Fourth note",
+      description: "This is the description for the fourth note"
     }
   ];
 

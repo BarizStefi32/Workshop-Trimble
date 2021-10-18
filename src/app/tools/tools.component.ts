@@ -37,8 +37,8 @@ export class ToolsComponent implements OnInit {
   }
 
   addNote():void{
-    const result = this.router.navigateByUrl("../addnote");
-    console.log(Promise.resolve(result));
-  //this.router.navigateByUrl('../addnote');
+    // const result = this.router.navigateByUrl("../addnote");
+    // console.log(Promise.resolve(result));
+  this.router.navigateByUrl('/addnote');
   }
 }

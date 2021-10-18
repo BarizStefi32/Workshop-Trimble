@@ -1,12 +1,45 @@
-<div *ngFor="let note of notes">
-    <mat-card (click)="showNote(note)">
-        <mat-card-header>
-            {{note.title}}
-        </mat-card-header>
+<div class="note-container">
+    <div class="note-div" *ngFor="let note of notes">
+        <mat-card class="note-card" (click)="showNote(note)">
+            <mat-card-header class="card-header">
+                {{note.title}}
+            </mat-card-header>
 
-        <mat-card-content>
-            {{note.description}}
-        </mat-card-content>
-    </mat-card>
+            <mat-card-content>
+                {{note.description}}
+            </mat-card-content>
 
+            <mat-card-footer class="buttons-container">
+
+                <div class="done-btn">
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon>subdirectory_arrow_right</mat-icon>
+              </button>
+
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon>star_half</mat-icon>
+              </button>
+
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon>done_all</mat-icon>
+              </button>
+                </div>
+
+                <div class="delete-btn">
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+              <mat-icon>delete</mat-icon>
+            </button>
+                </div>
+
+            </mat-card-footer>
+
+
+
+
+
+        </mat-card>
+
+
+
+    </div>
 </div>
