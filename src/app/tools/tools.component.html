@@ -21,15 +21,16 @@
 
 <p>Current date is: {{currentDate | date:'shortDate'}}</p> -->
 
-
 <mat-card class="add-note-card">
-    <button mat-icon-button>
+    <!-- <a href="/addnote"> -->
+    <button mat-icon-button (click)="addNote()">
     <mat-icon>add</mat-icon>
   </button>
+    <!-- </a> -->
 </mat-card>
 <br/>
 
-<h1>String is: {{"Angular Project Scholarship Trimble" | addHypen:"-"}} </h1>
+<!-- <h1>String is: {{"Angular Project Scholarship Trimble" | addHypen:"-"}} </h1>
 
 <div class="pipe-container">
 
@@ -58,4 +59,4 @@
     </div>
 
 
-</div>
+</div> -->

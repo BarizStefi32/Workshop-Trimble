@@ -1,6 +1,7 @@
 import { AppRoutingModule } from './../app-routing.module';
 import { MatInputModule } from '@angular/material/input';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tools',
@@ -22,7 +23,7 @@ export class ToolsComponent implements OnInit {
                        new Date('February 02, 2011 17:40:00')
                       ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,5 +34,11 @@ export class ToolsComponent implements OnInit {
     // this.textColor = "green";
     this.color = color;
 
+  }
+
+  addNote():void{
+    const result = this.router.navigateByUrl("../addnote");
+    console.log(Promise.resolve(result));
+  //this.router.navigateByUrl('../addnote');
   }
 }

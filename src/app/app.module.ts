@@ -25,6 +25,8 @@ import { AddPipePipe } from './add-pipe.pipe';
 import { FilterComponent } from './filter/filter.component';
 import { HighlightBackgroundDirective } from './directives/highlight-background.directive';
 import { AddHypenPipe } from './pipes/add-hypen.pipe';
+import { AddNoteComponent } from './add-note/add-note.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { AddHypenPipe } from './pipes/add-hypen.pipe';
     FilterComponent,
     HighlightDirectiveText,
     HighlightBackgroundDirective,
-    AddHypenPipe
+    AddHypenPipe,
+    AddNoteComponent,
+    HomeComponent
 
   ],
   imports: [

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Note } from './note';
 
 @Component({
   selector: 'app-note',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteComponent implements OnInit {
 
-  constructor() { }
+  notes: Note[] = [
+    {
+      id: "Id1",
+      title: "First note",
+      description: "This is the description for the first note"
+    },
+    {
+      id: "Id2",
+      title: "Second note",
+      description: "This is the description for the second note"
+    }
+  ];
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  showNote(note:any){
+    this.router.navigate(['addnote'],{queryParams:{title:note.title, description:note.description}});
   }
 
 }
