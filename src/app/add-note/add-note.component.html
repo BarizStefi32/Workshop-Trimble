@@ -3,14 +3,22 @@
 <form class="add-note-form">
     <label class="label-style" for="inputNote">Title</label>
     <mat-form-field>
-        <input matInput id="inputNote" name="inputNote" placeholder="Introduce the title" required minlength="4" />
+        <input matInput id="inputNote" name="inputNote" placeholder="Introduce the title" required minlength="4" [(ngModel)]="title" />
     </mat-form-field>
 
     <label class="label-style" for="inputNote">Description</label>
     <mat-form-field>
-        <textarea matInput name="inputNote" placeholder="Introduce the description" required minlength="15"></textarea>
+        <textarea matInput name="inputNote" placeholder="Introduce the description" required minlength="15" [(ngModel)]="description"></textarea>
     </mat-form-field>
 
-    <button mat-button>Add</button>
+    <mat-form-field appearance="fill">
+        <mat-select placeholder="Choose the category:" name="categorySelect" (selectionChange)="onChange($event)">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-button (click)="addNote()">Add</button>
 
 </form>

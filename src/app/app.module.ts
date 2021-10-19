@@ -14,6 +14,7 @@ import { MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from "@angular/material/card";
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,8 @@ import { HighlightBackgroundDirective } from './directives/highlight-background.
 import { AddHypenPipe } from './pipes/add-hypen.pipe';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { HomeComponent } from './home/home.component';
+import { NoteService } from './services/note.service';
+import { RouteParamsComponent } from './route-params/route-params.component';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { HomeComponent } from './home/home.component';
     HighlightBackgroundDirective,
     AddHypenPipe,
     AddNoteComponent,
-    HomeComponent
+    HomeComponent,
+    RouteParamsComponent
 
   ],
   imports: [
@@ -60,9 +64,10 @@ import { HomeComponent } from './home/home.component';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [NoteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

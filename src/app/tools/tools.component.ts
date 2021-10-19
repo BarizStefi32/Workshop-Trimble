@@ -41,4 +41,11 @@ export class ToolsComponent implements OnInit {
     // console.log(Promise.resolve(result));
   this.router.navigateByUrl('/addnote');
   }
+
+
+  redirectPage(){
+
+    this.router.navigateByUrl('/routeparams');
+  }
+
 }
