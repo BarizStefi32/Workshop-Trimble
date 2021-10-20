@@ -2,7 +2,19 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-content: space-between;
     .filter-div {
         margin: 10px;
     }
+}
+
+.input-style {
+    width: 150px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.search-btn-style {
+    margin: 5px;
 }

@@ -1,5 +1,5 @@
 import { NoteService } from './../services/note.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Note } from './note';
 
@@ -8,9 +8,13 @@ import { Note } from './note';
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.scss']
 })
-export class NoteComponent implements OnInit {
+export class NoteComponent implements OnInit, OnChanges {
+
 
   notes: Note[];
+  @Input() selectedCategoryId: string;
+  @Input() selectedTerm: string;
+
 
   constructor(private router:Router, private noteService:NoteService) { }
 
@@ -22,6 +26,17 @@ export class NoteComponent implements OnInit {
 
   showNote(note:any){
     this.router.navigate(['addnote'],{queryParams:{title:note.title, description:note.description}});
+  }
+
+  ngOnChanges(): void {
+    if (this.selectedCategoryId) {
+      this.notes = this.noteService.getFiltredNotes(this.selectedCategoryId);
+    }
+
+    if (this.selectedTerm) {
+      this.notes = this.noteService.getSearchedNotes(this.selectedTerm);
+    }
+
   }
 
 }

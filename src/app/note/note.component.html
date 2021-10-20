@@ -1,6 +1,7 @@
 <div class="note-container">
     <div class="note-div" *ngFor="let note of notes">
-        <mat-card class="note-card" (click)="showNote(note)">
+        <mat-card class="note-card">
+            <!-- (click)="showNote(note)" -->
             <mat-card-header class="card-header">
                 {{note.title}}
             </mat-card-header>
@@ -33,13 +34,6 @@
 
             </mat-card-footer>
 
-
-
-
-
         </mat-card>
-
-
-
     </div>
 </div>

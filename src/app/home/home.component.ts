@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  categoryId:string;
+  termSearch:string;
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  receiveCategory(categId: string) {
+    this.categoryId = categId;
+  }
+
+  receiveTermSearch(term: string) {
+    this.termSearch = term;
+  }
+
 
 }

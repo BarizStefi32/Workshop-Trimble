@@ -1,8 +1,8 @@
 <br/>
-<app-filter></app-filter>
+<app-filter (emitSelectedFilter)="receiveCategory($event)" (emitSearchFunction)="receiveTermSearch($event)"></app-filter>
 
 <div class="home-style">
-    <app-note></app-note>
+    <app-note [selectedCategoryId]="categoryId" [selectedTerm]="termSearch"></app-note>
 
     <app-tools></app-tools>
 

@@ -46,6 +46,16 @@ export class AddNoteComponent implements OnInit {
 
   }
 
+  checkInputs(){
+    if(this.title !== "" && this.description !== "" && this.categoryId !== ""){
+
+      return false;
+    }
+
+    return true;
+
+  }
+
   private newGuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
       /[xy]/g,

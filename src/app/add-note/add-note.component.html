@@ -12,13 +12,13 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <mat-select placeholder="Choose the category:" name="categorySelect" (selectionChange)="onChange($event)">
+        <mat-select placeholder="Choose the category:" name="categorySelect" (selectionChange)="onChange($event)" required>
             <mat-option *ngFor="let category of categories" [value]="category.id">
                 {{category.name}}
             </mat-option>
         </mat-select>
     </mat-form-field>
 
-    <button mat-button (click)="addNote()">Add</button>
+    <button type="submit" mat-button (click)="addNote()" [disabled]="checkInputs()">Add</button>
 
 </form>

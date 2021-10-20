@@ -2,9 +2,12 @@
 
     <div class="filter-div" *ngFor="let category of categories">
 
-        <button mat-raised-button color="warn">{{category.name | uppercase}}</button>
+        <button mat-raised-button color="warn" (click)='selectFilter(category.id)'>{{category.name | uppercase}}</button>
 
     </div>
 
+    <input class="input-style" matInput type="text" name="titleSearch" [(ngModel)]="titleSearch" placeholder="Search for a title...">
+
+    <button class="search-btn-style" mat-raised-button color="warn" (click)='searchNotes()'>Search</button>
 
 </div>

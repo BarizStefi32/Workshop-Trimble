@@ -10,7 +10,6 @@ export class RouteParamsComponent implements OnInit {
 
   id:string;
 
-
   constructor(private _router:Router, private _activatedRoute:ActivatedRoute) {
 
    }
