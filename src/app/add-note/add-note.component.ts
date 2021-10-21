@@ -26,7 +26,7 @@ export class AddNoteComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.notes=this._noteService.getNotes();
+    // this.notes=this._noteService.getNotes();
     this.categories = this._categoryService.getCategories();
 
     // this._activatedRoute.queryParams.subscribe(params => {
@@ -35,9 +35,12 @@ export class AddNoteComponent implements OnInit {
     //  })
   }
 
-  addNote():void{
-    this._noteService.addNote(this.newGuid(),this.title,this.description,this.categoryId);
-    this._location.back();
+  addNote():void {
+    this._noteService.addNote(this.newGuid(),this.title,this.description,this.categoryId).subscribe((result) =>{
+      this.notes.push(...result);
+    })
+
+      this._location.back();
   }
 
   onChange(event){

@@ -10,6 +10,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from "@angular/material/card";
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,8 @@ import { AddNoteComponent } from './add-note/add-note.component';
 import { HomeComponent } from './home/home.component';
 import { NoteService } from './services/note.service';
 import { RouteParamsComponent } from './route-params/route-params.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
 
 
 @NgModule({
@@ -53,9 +56,15 @@ import { RouteParamsComponent } from './route-params/route-params.component';
     MatInputModule,
     MatCardModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [NoteService],
+  providers: [NoteService ,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpMockApiInterceptor,
+    multi: true
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

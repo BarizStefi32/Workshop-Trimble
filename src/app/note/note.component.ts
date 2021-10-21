@@ -20,7 +20,13 @@ export class NoteComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.noteService.serviceCall();
-    this.notes = this.noteService.getNotes();
+
+    this.noteService.getNotes().subscribe((result) =>{
+
+      this.notes = result;
+
+    })
+
 
   }
 
@@ -30,11 +36,17 @@ export class NoteComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.selectedCategoryId) {
-      this.notes = this.noteService.getFiltredNotes(this.selectedCategoryId);
+       this.noteService.getFiltredNotes(this.selectedCategoryId).subscribe((result) =>{
+         this.notes = result;
+       })
+
+
     }
 
     if (this.selectedTerm) {
-      this.notes = this.noteService.getSearchedNotes(this.selectedTerm);
+      this.noteService.getSearchedNotes(this.selectedTerm).subscribe((result) =>{
+        this.notes = result;
+      })
     }
 
   }
