@@ -27,6 +27,7 @@ import { NoteService } from './services/note.service';
 import { RouteParamsComponent } from './route-params/route-params.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
+import { EditNoteComponent } from './edit-note/edit-note.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
     AddHypenPipe,
     AddNoteComponent,
     HomeComponent,
-    RouteParamsComponent
+    RouteParamsComponent,
+    EditNoteComponent
 
   ],
   imports: [

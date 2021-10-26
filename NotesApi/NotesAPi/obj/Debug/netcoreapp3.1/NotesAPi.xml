@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NotesAPi</name>
+    </assembly>
+    <members>
+        <member name="M:NotesAPi.Controllers.CategoriesController.GetAllCategories">
+            <summary>
+                Returns the full list of categories
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:NotesAPi.Controllers.CategoriesController.GetCategoryById(System.Int32)">
+            <summary>
+                Returns only a category selected by the param id
+            </summary>
+            <param name="id"></param>
+            <response code="400">Bad request</response>
+            <returns></returns>
+            
+        </member>
+        <member name="M:NotesAPi.Controllers.CategoriesController.AddCategory(NotesAPi.Category)">
+            <summary>
+                Add a new category to the list
+            </summary>
+            <param name="bodyContent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NotesAPi.Controllers.CategoriesController.DeleteCategory(System.Int32)">
+            <summary>
+                Delete a category selected by the param id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NotesAPi.Controllers.NotesController.Get(System.String,System.String)">
+            <summary>
+               Returns a list of notes
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:NotesAPi.Controllers.NotesController.Post(NotesAPi.Note)">
+            <summary>
+                Add a new note 
+            </summary>
+            <param name="bodyContent"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

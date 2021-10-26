@@ -81,6 +81,12 @@ export class NoteService {
     return this.httpClient.get<Note[]>(this.baseUrl + `/notes`, this.httpOptions).pipe(map(((notes) => notes.filter(note=>note.title.toLowerCase().includes(searchTerm.toLowerCase()) || note.description.toLowerCase().includes(searchTerm.toLowerCase())))));
 
 
+
+  }
+
+  deleteNote(id:string){
+
+    return this.httpClient.delete(this.baseUrl + `/notes/` + id).subscribe();
   }
 
 

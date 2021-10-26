@@ -2,6 +2,7 @@ import { NoteService } from './../services/note.service';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Note } from './note';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-note',
@@ -48,7 +49,24 @@ export class NoteComponent implements OnInit, OnChanges {
         this.notes = result;
       })
     }
+  }
+
+
+  deleteNote(id:string) {
+
+    this.noteService.deleteNote(id);
+    this.noteService.getNotes().subscribe((result)=>{
+      this.notes = result;
+
+     } )
 
   }
+
+  editNote():void{
+
+  this.router.navigateByUrl('/editnote');
+
+  }
+
 
 }
