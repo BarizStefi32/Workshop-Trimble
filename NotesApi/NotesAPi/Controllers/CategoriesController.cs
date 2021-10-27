@@ -12,9 +12,9 @@ namespace NotesAPi.Controllers
     {
         List<Category> categories = new List<Category>()
         {
-           new Category(){ Id = 1, Name ="To do"},
-           new Category(){ Id = 2, Name ="Doing"},
-           new Category(){ Id = 3, Name = "Done"}
+           new Category(){ Id = new System.Guid("bd8686e6-406f-4a4f-81f9-08b005ece418"), Name ="To do"},
+           new Category(){ Id = new System.Guid("02b1fb2e-ecd4-491e-bfc2-3b20410caf0d"), Name ="Doing"},
+           new Category(){ Id = new System.Guid(), Name = "Done"}
 
         };
 
@@ -42,10 +42,19 @@ namespace NotesAPi.Controllers
 
        // [HttpGet("GetCategoryById/{id}")]
         [HttpGet("{id}")]
-        public IActionResult GetCategoryById(int id)
+        public IActionResult GetCategoryById(Guid id)
         {
-           // return Ok($" id:{id}");
-            return Ok(categories[id]);
+           // return Ok(categories.IndexOf(id));
+
+            Category item = categories.Find(category => category.Id == id);
+            if (item == null)
+            {
+                return BadRequest("Did not find the category with the id specified");
+            }
+
+            return Ok(item);
+
+
         }
 
         /// <summary>
@@ -69,12 +78,23 @@ namespace NotesAPi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public List<Category> DeleteCategory(int id)
+        public IActionResult DeleteCategory(Guid id)
         {
-            categories.Remove(categories[id]);
-            return categories;
+
+            Category item = categories.Find(category => category.Id == id);
+            if ( item == null)
+            {
+                return BadRequest("Category was not found!");
+   
+            }
+
+            categories.RemoveAt(categories.IndexOf(item));
+            return Ok(categories);
+
 
         }
+
+
 
     }
 }
