@@ -89,7 +89,7 @@ namespace NotesAPi.Controllers
             }
 
             categories.RemoveAt(categories.IndexOf(item));
-            return Ok(categories);
+            return NoContent();
 
 
         }
