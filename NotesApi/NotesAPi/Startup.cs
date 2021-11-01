@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using NotesAPi.Services;
+using NotesAPi.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
@@ -36,6 +39,14 @@ namespace NotesAPi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+
+            services.AddSingleton<INoteCollectionService, NoteCollectionService>();
+            services.AddSingleton<IOwnerCollectionService, OwnerCollectionService>();
+
+            services.Configure<MongoDBSettings>(Configuration.GetSection(nameof(MongoDBSettings)));
+            services.AddSingleton<IMongoDBSettings>(sp => sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
+
 
 
         }
