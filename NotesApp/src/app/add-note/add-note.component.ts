@@ -1,6 +1,7 @@
 import { CategoryService } from './../services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Router} from '@angular/router';
 import { Note } from '../note/note';
 import { NoteService } from '../services/note.service';
 import { Location } from '@angular/common';
@@ -21,8 +22,7 @@ export class AddNoteComponent implements OnInit {
      notes:Note[];
      categories:Category[];
 
-
-  constructor(private _activatedRoute: ActivatedRoute, private _noteService: NoteService,private _categoryService: CategoryService,private _location: Location) { }
+  constructor(private router:Router, private _activatedRoute: ActivatedRoute, private _noteService: NoteService,private _categoryService: CategoryService,private _location: Location) { }
 
   ngOnInit(): void {
 
@@ -36,11 +36,14 @@ export class AddNoteComponent implements OnInit {
   }
 
   addNote():void {
-    this._noteService.addNote(this.newGuid(),this.title,this.description,this.categoryId).subscribe((result) =>{
-      this.notes.push(...result);
-    })
+   // this._noteService.addNote(this.newGuid(),this.title,this.description,this.categoryId).subscribe((result) =>{
+   //   this.notes.push(...result);
+    //})
 
-      this._location.back();
+     // this._location.back();
+
+     this._noteService.addNote(this.newGuid(),this.title,this.description,
+     this.categoryId).subscribe(()=>this.router.navigateByUrl(''));
   }
 
   onChange(event){

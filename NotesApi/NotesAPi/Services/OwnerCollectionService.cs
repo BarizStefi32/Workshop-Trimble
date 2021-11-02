@@ -18,8 +18,8 @@ namespace NotesAPi.Services
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            //_owners = database.GetCollection<Owner>(settings.OwnerCollectionName);
-            _owners = database.GetCollection<Owner>(settings.NoteCollectionName);
+            _owners = database.GetCollection<Owner>(settings.OwnerCollectionName);
+           // _owners = database.GetCollection<Owner>(settings.NoteCollectionName);
         }
 
 
@@ -43,8 +43,17 @@ namespace NotesAPi.Services
 
         public async Task<List<Owner>> GetAll()
         {
-            var result = await _owners.FindAsync(owner => true);
-            return result.ToList();
+            try
+            {
+                var result = await _owners.FindAsync(owner => true);
+                return result.ToList();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                return null;
+            }
+            
         }
 
 

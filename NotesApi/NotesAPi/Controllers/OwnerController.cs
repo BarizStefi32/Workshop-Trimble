@@ -39,12 +39,12 @@ namespace NotesAPi.Controllers
                 List<Owner> owners = await _ownerCollectionService.GetAll();
                 return Ok(owners);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
                 return BadRequest("Owner cannot be null");
             }
-            
+
         }
 
 
