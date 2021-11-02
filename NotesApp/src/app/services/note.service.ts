@@ -42,7 +42,7 @@ export class NoteService {
   //   }
   // ];
 
-  readonly baseUrl= "https://localhost:4200";
+  readonly baseUrl= "https://localhost:44379";
 
   readonly httpOptions = {
     headers: new HttpHeaders({
@@ -59,7 +59,8 @@ export class NoteService {
 
   getNotes():Observable<Note[]>{
 
-    return this.httpClient.get<Note[]>(this.baseUrl+`/notes`, this.httpOptions);
+    return this.httpClient.get<Note[]>(
+      this.baseUrl+`/notes`, this.httpOptions);
 
   }
 
@@ -67,7 +68,8 @@ export class NoteService {
   {
     const noteModel = new NoteModel(id,title,description,categoryId);
 
-    return this.httpClient.post<Note[]>(this.baseUrl + `/notes`, noteModel, this.httpOptions)
+    return this.httpClient.post<Note[]>(
+      this.baseUrl + `/notes`, noteModel);
   }
 
   getFiltredNotes(categoryId:string):Observable<Note[]>{
@@ -86,7 +88,7 @@ export class NoteService {
 
   deleteNote(id:string){
 
-    return this.httpClient.delete(this.baseUrl + `/notes/` + id).subscribe();
+    return this.httpClient.delete(this.baseUrl + `/notes/` + id);
   }
 
 

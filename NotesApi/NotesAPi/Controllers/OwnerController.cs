@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NotesAPi.Models;
+using NotesAPi.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,37 +10,63 @@ namespace NotesAPi.Controllers
 {
     public class OwnerController : Controller
     {
-        private static List<Owner> _owners = new List<Owner>()
+        //private static List<Owner> _owners = new List<Owner>()
+        //{
+        //   new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000001"), Name ="Popescu"},
+        //   new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000002"), Name ="Ionescu"},
+        //   new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000003"), Name = "Bariz"}
+
+        //};
+
+        readonly IOwnerCollectionService _ownerCollectionService;
+
+
+        public OwnerController(IOwnerCollectionService ownerCollectionService)
         {
-           new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000001"), Name ="Popescu"},
-           new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000002"), Name ="Ionescu"},
-           new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000003"), Name = "Bariz"}
+            _ownerCollectionService = ownerCollectionService;
+        }
 
-        };
-
-        public OwnerController() { }
 
         /// <summary>
         ///     Return all the owners
         /// </summary>
         /// <returns></returns>
         [HttpGet("/Owners")]
-        public IActionResult GetAllOwners()
+        public async Task<IActionResult> GetAllOwners()
         {
-            return Ok(_owners);
+            try
+            {
+                List<Owner> owners = await _ownerCollectionService.GetAll();
+                return Ok(owners);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                return BadRequest("Owner cannot be null");
+            }
+
         }
 
 
         /// <summary>
         ///     Add a new owner
         /// </summary>
-        /// <param name="bodyContent"></param>
+        /// <param name="ownerToAdd"></param>
         /// <returns></returns>
         [HttpPost("")]
-        public IActionResult AddOwner([FromBody] Owner bodyContent)
+        public async Task<IActionResult> AddOwner([FromBody] Owner ownerToAdd)
         {
-            _owners.Add(bodyContent);
-            return Ok(_owners);
+            if (ownerToAdd == null)
+            {
+                return BadRequest("Owner cannot be null");
+            }
+
+            if (await _ownerCollectionService.Create(ownerToAdd))
+            {
+                return Ok();
+            }
+
+            return NoContent();
 
         }
 
@@ -50,19 +77,15 @@ namespace NotesAPi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public IActionResult DeleteOwner(Guid id)
+        public async Task<IActionResult> DeleteOwner(Guid id)
         {
 
-            var index = _owners.FindIndex(owner => owner.Id == id);
-
-         
-            if (index == -1)
+            var index = await _ownerCollectionService.Delete(id);
+            if (index == false)
             {
                 return NotFound();
 
             }
-
-            _owners.RemoveAt(index);
 
             return NoContent();
 
@@ -76,26 +99,40 @@ namespace NotesAPi.Controllers
         /// <param name="ownerToUpdate"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public IActionResult UpdateOwner(Guid id, [FromBody] Owner ownerToUpdate)
+        public async Task<IActionResult> UpdateOwner(Guid id, [FromBody] Owner ownerToUpdate)
         {
             if (ownerToUpdate == null)
             {
                 return BadRequest("Note cannot be null");
             }
 
-            int index = _owners.FindIndex(owner => owner.Id == id);
+            var index = await _ownerCollectionService.Update(id, ownerToUpdate);
 
-            if (index == -1)
+            if (index == false)
             {
                 return NotFound();
             }
 
-            ownerToUpdate.Id = _owners[index].Id;
-            _owners[index] = ownerToUpdate;
-
             return NoContent();
 
         }
+
+        /// <summary>
+        ///     Return a note find by a specified id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //[HttpGet("{id}", Name = "GetOwnerById")]
+        //public async Task<IActionResult> GetOwnerById(Guid id)
+        //{
+
+        //    Owner owner = await _ownerCollectionService.Get(id);
+        //    if (owner == null)
+        //    {
+        //        return BadRequest("Note was not found");
+        //    }
+        //    return Ok(owner);
+        //}
 
 
     }

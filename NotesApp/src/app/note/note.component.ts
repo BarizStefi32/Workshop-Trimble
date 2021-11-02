@@ -22,11 +22,13 @@ export class NoteComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.noteService.serviceCall();
 
-    this.noteService.getNotes().subscribe((result) =>{
+  //  this.noteService.getNotes().subscribe((result) =>{
 
-      this.notes = result;
+   // this.notes = result;
 
-    })
+   // })
+
+   this.getNotes();
 
 
   }
@@ -54,13 +56,14 @@ export class NoteComponent implements OnInit, OnChanges {
 
   deleteNote(id:string) {
 
-    this.noteService.deleteNote(id);
-    this.noteService.getNotes().subscribe((result)=>{
-      this.notes = result;
-
-     } )
-
+    this.noteService.deleteNote(id).subscribe(()=>this.getNotes());
   }
+
+  getNotes(){
+     this.noteService.getNotes().subscribe((result)=>{
+        this.notes = result;
+         });
+      }
 
   editNote():void{
 

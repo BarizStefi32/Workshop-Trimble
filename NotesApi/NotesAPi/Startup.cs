@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using NotesAPi.Services;
+using NotesAPi.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
@@ -29,6 +32,15 @@ namespace NotesAPi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
+
             services.AddControllers();
             services.AddSwaggerGen( c  =>
             {
@@ -38,17 +50,29 @@ namespace NotesAPi
             });
 
 
+            services.AddSingleton<INoteCollectionService, NoteCollectionService>();
+            services.AddSingleton<IOwnerCollectionService, OwnerCollectionService>();
+
+            services.Configure<MongoDBSettings>(Configuration.GetSection(nameof(MongoDBSettings)));
+            services.AddSingleton<IMongoDBSettings>(sp => sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("CorsPolicy");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseSwagger();
+
+            
 
             app.UseSwaggerUI(c =>
             {
