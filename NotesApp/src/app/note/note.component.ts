@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs';
 import { NoteService } from './../services/note.service';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Note } from './note';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -15,7 +16,7 @@ export class NoteComponent implements OnInit, OnChanges {
   notes: Note[];
   @Input() selectedCategoryId: string;
   @Input() selectedTerm: string;
-
+  @Output() emitUpdateNote = new EventEmitter<string>();
 
   constructor(private router:Router, private noteService:NoteService) { }
 
@@ -65,11 +66,7 @@ export class NoteComponent implements OnInit, OnChanges {
          });
       }
 
-  editNote():void{
 
-  this.router.navigateByUrl('/editnote');
-
-  }
 
 
 }

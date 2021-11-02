@@ -19,6 +19,6 @@
         </mat-select>
     </mat-form-field> -->
 
-    <!-- <button type="submit" mat-button (click)="addNote()" [disabled]="checkInputs()">Add</button> -->
+    <button type="submit" mat-button (emitUpdateNote)="editNote($event)">Save</button>
 
 </form>

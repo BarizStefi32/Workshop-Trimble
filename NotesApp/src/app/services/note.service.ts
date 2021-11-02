@@ -92,6 +92,12 @@ export class NoteService {
   }
 
 
+  editNote(id:string):Observable<Note>{
+
+    var result = this.httpClient.get<Note[]>(this.baseUrl+ `/notes/` + id);
+    return this.httpClient.put<Note>(this.baseUrl + `/notes/` + id, result);
+  }
+
 
 
 }
