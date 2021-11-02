@@ -1,17 +1,32 @@
-<h1> Edit a note</h1>
+<h1>Edit a note</h1>
 
 <form class="add-note-form">
-    <label class="label-style" for="inputNote">Title</label>
-    <mat-form-field>
-        <input matInput id="inputNote" name="inputNote" placeholder="Introduce the title" required minlength="4" [(ngModel)]="title" />
-    </mat-form-field>
+  <label class="label-style" for="inputNote">Title</label>
+  <mat-form-field>
+    <input
+      matInput
+      id="inputNote"
+      name="inputNote"
+      placeholder="Introduce the title"
+      required
+      minlength="4"
+      [(ngModel)]="title"
+    />
+  </mat-form-field>
 
-    <label class="label-style" for="inputNote">Description</label>
-    <mat-form-field>
-        <textarea matInput name="inputNote" placeholder="Introduce the description" required minlength="15" [(ngModel)]="description"></textarea>
-    </mat-form-field>
+  <label class="label-style" for="inputNote">Description</label>
+  <mat-form-field>
+    <textarea
+      matInput
+      name="inputNote"
+      placeholder="Introduce the description"
+      required
+      minlength="15"
+      [(ngModel)]="description"
+    ></textarea>
+  </mat-form-field>
 
-    <!-- <mat-form-field appearance="fill">
+  <!-- <mat-form-field appearance="fill">
         <mat-select placeholder="Choose the category:" name="categorySelect" (selectionChange)="onChange($event)" required>
             <mat-option *ngFor="let category of categories" [value]="category.id">
                 {{category.name}}
@@ -19,6 +34,5 @@
         </mat-select>
     </mat-form-field> -->
 
-    <button type="submit" mat-button (emitUpdateNote)="editNote($event)">Save</button>
-
+  <button type="submit" mat-button (click)="save()">Save</button>
 </form>
