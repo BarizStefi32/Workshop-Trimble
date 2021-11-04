@@ -19,7 +19,6 @@ namespace NotesAPi.Services
             var database = client.GetDatabase(settings.DatabaseName);
 
             _owners = database.GetCollection<Owner>(settings.OwnerCollectionName);
-           // _owners = database.GetCollection<Owner>(settings.NoteCollectionName);
         }
 
 

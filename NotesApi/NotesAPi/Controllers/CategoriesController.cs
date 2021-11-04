@@ -44,8 +44,7 @@ namespace NotesAPi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCategoryById(Guid id)
         {
-           // return Ok(categories.IndexOf(id));
-
+        
             Category item = categories.Find(category => category.Id == id);
             if (item == null)
             {

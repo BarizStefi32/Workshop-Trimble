@@ -10,14 +10,7 @@ namespace NotesAPi.Controllers
 {
     public class OwnerController : Controller
     {
-        //private static List<Owner> _owners = new List<Owner>()
-        //{
-        //   new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000001"), Name ="Popescu"},
-        //   new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000002"), Name ="Ionescu"},
-        //   new Owner(){  Id =  new Guid("00000000-0000-0000-0000-000000000003"), Name = "Bariz"}
-
-        //};
-
+      
         readonly IOwnerCollectionService _ownerCollectionService;
 
 
