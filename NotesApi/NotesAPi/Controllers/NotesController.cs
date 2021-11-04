@@ -13,15 +13,7 @@ namespace NotesAPi.Controllers
     public class NotesController : ControllerBase
     {
 
-        //private static List<Notes> _notes = new List<Notes> { new Notes { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = new Guid("00000000-0000-0000-0000-000000000001"), Title = "First Note", Description = "First Note Description" },
-        //new Notes { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = new Guid("00000000-0000-0000-0000-000000000001"), Title = "Second Note", Description = "Second Note Description" },
-        //new Notes { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = new Guid("00000000-0000-0000-0000-000000000001"), Title = "Third Note", Description = "Third Note Description" },
-        //new Notes { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = new Guid("00000000-0000-0000-0000-000000000001"), Title = "Fourth Note", Description = "Fourth Note Description" },
-        //new Notes { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = new Guid("00000000-0000-0000-0000-000000000001"), Title = "Fifth Note", Description = "Fifth Note Description" }
-        //};
-
         INoteCollectionService _noteCollectionService;
-
 
         public NotesController(INoteCollectionService noteCollectionService)
         {
@@ -184,7 +176,6 @@ namespace NotesAPi.Controllers
 
 
 
-
         /// <summary>
         ///         Delete a specified note from a specified owner
         /// </summary>
@@ -209,6 +200,7 @@ namespace NotesAPi.Controllers
 
         //}
 
+
         /// <summary>
         ///     Delete all the notes from a specified owner
         /// </summary>
@@ -232,8 +224,6 @@ namespace NotesAPi.Controllers
 
 
         //}
-
-
 
 
 
@@ -269,9 +259,6 @@ namespace NotesAPi.Controllers
 
         //    return CreatedAtRoute("GetNoteById", new { id = note.Id }, note);
         //}
-
-
-
 
 
 
