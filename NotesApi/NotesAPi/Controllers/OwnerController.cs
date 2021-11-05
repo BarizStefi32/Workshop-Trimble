@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace NotesAPi.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class OwnerController : Controller
     {
       
